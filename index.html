@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VT Lover Audition</title>
+    <style>
+        /* Basic styling for the page */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 50%;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>VT Lover Audition</h1>
+        <form id="quizForm">
+            <!-- Dropdown selections for user responses -->
+            <label>Race:</label>
+            <select id="race">
+                <option value="1">Asian</option>
+                <option value="-1">Blonde</option>
+                <option value="-10">Blackass</option>
+            </select><br><br>
+
+            <label>Skin Color:</label>
+            <select id="skinColor">
+                <option value="1">Ghost Pale</option>
+                <option value="1">Kinda Pale</option>
+                <option value="1">Tan</option>
+                <option value="-10">Dark</option>
+                <option value="-10">Under the Bed</option>
+            </select><br><br>
+
+            <label>Body Type:</label>
+            <select id="bodyType">
+                <option value="1">Skinny</option>
+                <option value="0">Average</option>
+                <option value="-100">Obese</option>
+            </select><br><br>
+
+            <label>Hair Length:</label>
+            <select id="hairLength">
+                <option value="1">Long</option>
+                <option value="-1">Medium</option>
+                <option value="-1">Short</option>
+            </select><br><br>
+
+            <label>Are you failing at school?</label>
+            <select id="schoolStatus">
+                <option value="1">No</option>
+                <option value="-1">Yes</option>
+            </select><br><br>
+
+            <label>Personality:</label>
+            <select id="personality">
+                <option value="1">Extroverted</option>
+                <option value="-1">Introverted</option>
+            </select><br><br>
+
+            <label>Age Compatibility:</label>
+            <select id="ageDifference">
+                <option value="1">Same</option>
+                <option value="1">Older</option>
+                <option value="-1">Younger</option>
+            </select><br><br>
+
+            <label>Booty Size:</label>
+            <select id="booty">
+                <option value="2">Gigga</option>
+                <option value="2">Medium</option>
+                <option value="-1">Cutesy</option>
+                <option value="-1">Samsung Flat Screen TV</option>
+            </select><br><br>
+
+            <label>Boobies Size:</label>
+            <select id="boobies">
+                <option value="2">Medium</option>
+                <option value="2">Cutesy</option>
+                <option value="1">Gigga</option>
+                <option value="-1">Samsung Flat Screen TV</option>
+            </select><br><br>
+
+            <!-- Button to submit and calculate score -->
+            <button type="button" onclick="calculateScore()">Submit</button>
+        </form>
+
+        <!-- Section to display the result -->
+        <h2 id="result"></h2>
+        <h2 id="scoreDisplay"></h2>
+        <h2 id="fitMessage"></h2>
+        <h3 id="userChoices"></h3>
+    </div>
+
+    <script>
+        // Function to calculate the total score based on user input
+        function calculateScore() {
+            let score = 0;
+            
+            // Retrieve values from dropdown selections and calculate score
+            let race = parseInt(document.getElementById("race").value);
+            let skinColor = parseInt(document.getElementById("skinColor").value);
+            let bodyType = parseInt(document.getElementById("bodyType").value);
+            let hairLength = parseInt(document.getElementById("hairLength").value);
+            let schoolStatus = parseInt(document.getElementById("schoolStatus").value);
+            let personality = parseInt(document.getElementById("personality").value);
+            let ageDifference = parseInt(document.getElementById("ageDifference").value);
+            let booty = parseInt(document.getElementById("booty").value);
+            let boobies = parseInt(document.getElementById("boobies").value);
+
+            // Calculate the total score
+            score = race + skinColor + bodyType + hairLength + schoolStatus + personality + ageDifference + booty + boobies;
+
+            // Display user choices in one line without numbers
+            let userChoicesText = `because you are the ${document.getElementById("ageDifference").selectedOptions[0].text} age with ${document.getElementById("booty").selectedOptions[0].text} booty, ${document.getElementById("boobies").selectedOptions[0].text} boobies, ${document.getElementById("bodyType").selectedOptions[0].text}, ${document.getElementById("hairLength").selectedOptions[0].text} hair, ${document.getElementById("skinColor").selectedOptions[0].text} color, ${document.getElementById("race").selectedOptions[0].text} looking ahh!!! `;
+            document.getElementById("userChoices").innerText = userChoicesText;
+
+            // Display the final calculated score separately
+            document.getElementById("scoreDisplay").innerText = "Final Score: " + score;
+            
+            // Ensure the fitMessage section is updated correctly
+            let fitMessage = "";
+            if (score > 3) {
+                fitMessage = "YOOO YOU GOT THE BEST MATCH FOR MAH BOY";
+            } else if (score > 0) {
+                fitMessage = "YOURE ALRIGT ";
+            } else {
+                fitMessage = "HELL NAHHH YOU AINT MATCHING HIIM";
+            }
+            
+            // Display the match message
+            document.getElementById("fitMessage").innerHTML = fitMessage;
+        }
+    </script>
+</body>
+</html>
